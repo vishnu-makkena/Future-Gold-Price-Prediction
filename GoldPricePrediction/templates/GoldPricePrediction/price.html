@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gold Price Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link your CSS file -->
+    <link rel="stylesheet" href="C:\Users\makke\OneDrive\Desktop\Files\Project Stage - I\Gold-Price-web-application\GoldPricePrediction\static\GoldPricePrediction\style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalnia&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Carattere&family=Kalnia&display=swap" rel="stylesheet">
+    <style>
+* {
+            margin: 0;
+            padding: 0;
+            text-align: center;         
+            color: #7f7f7f;
+        }
+
+        .navbar { 
+            background-color: #ffcccc; /* Set nav color */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 30px;
+            margin-left: 30px;
+            margin-right: 30px;
+            border-radius: 25px;
+        }
+        .navbar-brand {
+            display: inline-block;
+            margin-left: 60px; /* Adjust alignment */
+            color: #252525; /* Font color */
+            text-decoration:none
+
+        }
+
+        .navbar-nav {
+            margin-left: auto; /* Align to the right */
+        }
+
+        /* Existing styles... */
+        .navbar-nav .nav-item {
+        margin-right: 60px; /* Adjust spacing between items */
+        text-align: right;
+        display: inline-block;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        /* float: none; */
+        /* vertical-align: top; */
+        }
+
+        .navbar-nav .nav-item .nav-link {
+        color: #000000; /* Font color */
+        position: relative; /* Relative position */
+        text-decoration: none; /* Remove default underline */
+        overflow: hidden; /* Hide overflow for the pseudo-element */
+        }
+
+        .navbar-nav .nav-item .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px; /* Thickness of the line */
+            background: linear-gradient(90deg, transparent, #000000, transparent); /* Gradient as the underline */
+            transition: width 0.3s ease; /* Transition properties */
+            transform-origin: center;
+            transform: scaleX(0); /* Initially, no width */
+        }
+
+        .navbar-nav .nav-item .nav-link:hover::before {
+            width: 100%; /* Full width on hover */
+            transform: scaleX(1); /* Scale to full width */
+        }   
+        body {
+            font-family: 'Kalnia', sans-serif;
+            background-color: #fff8e8;
+        }
+
+
+        .oss{
+            color: #000000;
+            margin-top: 25px;
+        }
+        /* Add this to your existing CSS or your linked CSS file */
+.map-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.map-iframe {
+    border: 0;
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adding transition effects */
+    margin: 0 10px; /* Adjust the horizontal margin to decrease space */
+
+}
+
+.map-iframe:hover {
+    transform: translateY(-5px); /* Move the iframe up slightly on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+        /* CSS styles for error or gold price message */
+/* CSS styles for error or gold price message */
+.error {
+    color: red; /* Error message text color */
+    font-weight: bold; /* Make it bold */
+    /* margin-top: 10px;  */
+}
+
+.gold-price-message {
+    background-color: #ffe0e0; /* Background color */
+    padding: 15px; /* Add padding for space */
+    border-radius: 8px; /* Rounded corners */
+    margin-top: 20px; /* Top margin */
+    max-width: 600px; /* Limit the maximum width of the box */
+    margin-left: auto; /* Center the box horizontally */
+    margin-right: auto; /* Center the box horizontally */
+}
+
+
+
+        </style>
+</head>
+<body>
+
+    <header>
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="{% url 'home' %}">GLD</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {% block title_active %}{% endblock title_active %}" href="{% url 'home' %}">
+                            {% block title %}Home{% endblock title %}
+                            {% block title_icon %}<span class="sr-only"></span>{% endblock title_icon %}
+                        </a>
+                    </li>
+                    <!-- Add other navigation links (Gold Brands, Information, Plots, Contact Us) -->
+                    <li class="nav-item">
+                        <a class="nav-link {% block gold_brands_active %}{% endblock gold_brands_active %}" href="{% url 'info_page' %}">
+                            {% block gold_brands %}Gold Brands{% endblock gold_brands %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% block information_active %}{% endblock information_active %}" href="{% url 'information' %}">
+                            {% block information %}Information{% endblock information %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% block plots_active %}{% endblock plots_active %}" href="{% url 'plots' %}">
+                            {% block plots %}Plots{% endblock plots %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% block contact_active %}{% endblock contact_active %}" href="{% url 'contact' %}">
+                            {% block contact %}Contact Us{% endblock contact %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% block gold_price_active %}{% endblock gold_price_active %}" href="{% url 'goldpresentprice' %}">
+                            {% block gold_price %}Gold Price{% endblock gold_price %}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    
+    
+
+    <head>
+        <title>Gold Price Prediction</title>
+    </head>
+    <body>
+        <h1> Future Gold Price</h1>
+    
+        <form method="post" action="{% url 'predict_gold_price' %}">
+            {% csrf_token %}
+            <label for="year">Enter Year:</label>
+            <input type="number" id="year" name="year" min="2025" required><br><br>
+    
+            <label for="month">Enter Month (1-12):</label>
+            <input type="number" id="month" name="month" min="1" max="12" required><br><br>
+    
+            <label for="day">Enter Day (1-31):</label>
+            <input type="number" id="day" name="day" min="1" max="31" required><br><br>
+    
+            <button type="submit">Predict</button>
+        </form>
+    
+        {% if predicted_price %}
+            <h2>The predicted gold price for {{ day }}/{{ month }}/{{ year }} is ₹{{ predicted_price|floatformat:2 }}</h2>
+        {% endif %}
+    
+    <!-- <a href="home.html"><button>Go Back</button></a> -->
+
+    
+</body>
+</html>
