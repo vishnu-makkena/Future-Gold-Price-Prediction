@@ -2,7 +2,7 @@
 
  <div align="justify"> The Gold Price Prediction Web App is a Django-based application that leverages machine learning techniques to predict gold prices. This detailed overview provides insights into the methodologies, features, technologies used, and the functionality of the application. </div>
 
- [Presentation](https://www.canva.com/design/DAF4tbnq1iY/nN6byRnGjQQlbrBdkqAH0A/edit?utm_content=DAF4tbnq1iY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+ [Presentation](https://drive.google.com/file/d/1xeIrJzpGGJxZNX1kB6iW7iTyRaDPMPhS/view?usp=sharing)
  
 ![Overview](https://github.com/vishnu-makkena/Future-Gold-Price-Prediction)
 
