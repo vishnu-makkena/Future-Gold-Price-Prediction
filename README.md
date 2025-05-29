@@ -4,7 +4,7 @@
 
  [Presentation](https://www.canva.com/design/DAF4tbnq1iY/nN6byRnGjQQlbrBdkqAH0A/edit?utm_content=DAF4tbnq1iY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
  
-![Overview](https://github.com/shivatejapecheti/Gold-Price-forecasting-web-application/assets/126412107/62567332-eaba-4c7d-afc1-1f31bcc10773)
+![Overview](https://github.com/vishnu-makkena/Future-Gold-Price-Prediction)
 
 Technologies Used: <div align="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" height="40" alt="django logo"  />
